@@ -278,4 +278,17 @@ public final class Posix implements Os {
             buffer.position(bytesReadOrWritten + originalPosition);
         }
     }
+     @Override
+    public boolean initIncognitoMode(boolean flag) {
+	return (initIncognitoNative() > 0) ? true : false;
+    }
+    private native int initIncognitoNative();
+
+    @Override
+    public void stopIncognitoMode() {
+	stopIncognitoNative();
+    }
+
+    private native void stopIncognitoNative();
+
 }
